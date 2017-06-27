@@ -1,0 +1,12 @@
+package com.simple;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SimpleDemoWarApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SimpleDemoWarApplication.class, args);
+	}
+}
