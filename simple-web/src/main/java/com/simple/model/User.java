@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * User: Jfeng
@@ -17,6 +18,19 @@ public class User {
     private String name;
     private String address;
     private String address2;
+
+    private String userName;
+    private String password;
+
+    public User() {
+
+    }
+
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }

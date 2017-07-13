@@ -13,14 +13,13 @@ import java.util.List;
  * Date: 2017/6/2
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserMapper userMapper;
 
-
-    @RequestMapping("findAll")
+    @RequestMapping("/findAll")
     public List<User> findAll() {
         return userMapper.selectAll();
     }

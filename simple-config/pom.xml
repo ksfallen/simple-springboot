@@ -5,6 +5,9 @@
     <groupId>com.simple</groupId>
     <artifactId>simple-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>../simple-config-server</module>
+    </modules>
+    <packaging>pom</packaging>
 
 </project>

@@ -12,7 +12,7 @@
     </settings>
 
     <typeAliases>
-        <package name="com.simple.model.Book"/>
+        <package name="com.simple.model"/>
     </typeAliases>
 
     <!--<plugins>-->

@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/user/readinglist")
-public class ReadingListController {
+public class BookController {
 
     @Autowired
     private BookMapper bookMapper;
