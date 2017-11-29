@@ -1,0 +1,56 @@
+#server:
+#  context-path: /demo
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/gray?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+
+  mvc:
+    ##设定静态文件路径，js,css等
+    static-path-pattern: /static/**
+#
+#  # freemarker
+  freemarker:
+    cache: false
+    charset: utf-8
+    content-type: text/html
+    check-template-location: true
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    settings:
+      template_update_delay: 0
+      default_encoding: UTF-8
+      classic_compatible: false
+#      auto_import: include/common.ftl as common
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+
+mybatis:
+  type-aliases-package: com.simple.demo.model
+
+#
+#
+#
+#
+## freemarker
+##spring.freemarker.cache=false
+##spring.freemarker.charset=UTF-8
+##spring.freemarker.content-type=text/html
+##spring.freemarker.check-template-location=true
+##spring.freemarker.expose-request-attributes=true
+##spring.freemarker.expose-session-attributes=true
+##spring.freemarker.request-context-attribute=request
+##spring.freemarker.template-loader-path=classpath:/templates
+##spring.freemarker.suffix=.ftl
+### 在生产环境下更新模板的间隔要根据实际情况设置，这里为开发方便设置为5秒
+##spring.freemarker.settings.template_update_delay=0
+##spring.freemarker.settings.default_encoding=UTF-8
+##spring.freemarker.settings.classic_compatible=true
+### ftl里的内容和项目里要用到的公共的macro合在一起
+###spring.freemarker.settings.auto_import=common/website.ftl as website
+### 数字格式不用逗号隔开配置
+##spring.freemarker.settings.number_format=0.##

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.demo.mapper.AppInfoMapper">
+    <resultMap id="BaseResultMap" type="com.simple.demo.model.AppInfo">
+        <id column="appInfoId" jdbcType="INTEGER" property="appInfoId"/>
+        <result column="appName" jdbcType="VARCHAR" property="appName"/>
+        <result column="appDesc" jdbcType="VARCHAR" property="appDesc"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="toneAppId" jdbcType="VARCHAR" property="toneAppId"/>
+        <result column="ownerId" jdbcType="INTEGER" property="ownerId"/>
+        <result column="inputDate" jdbcType="TIMESTAMP" property="inputDate"/>
+        <result column="stampDate" jdbcType="TIMESTAMP" property="stampDate"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMap2" type="com.simple.demo.model.AppInfo">
+        <id column="appInfoId" jdbcType="INTEGER" property="appInfoId"/>
+        <result column="appName" jdbcType="VARCHAR" property="appName"/>
+        <result column="appDesc" jdbcType="VARCHAR" property="appDesc"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="toneAppId" jdbcType="VARCHAR" property="toneAppId"/>
+        <result column="ownerId" jdbcType="INTEGER" property="ownerId"/>
+        <result column="inputDate" jdbcType="TIMESTAMP" property="inputDate"/>
+        <result column="stampDate" jdbcType="TIMESTAMP" property="stampDate"/>
+        <association property="userInfo" javaType="com.simple.demo.model.UserInfo"
+                    column="ownerId"  >
+            <result column="userName" jdbcType="VARCHAR" property="userName" />
+        </association>
+    </resultMap>
+
+</mapper>

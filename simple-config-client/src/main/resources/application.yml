@@ -1,0 +1,26 @@
+endpoints:
+    restart:
+        enabled: true
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka/
+
+
+server:
+    port: 7002
+spring:
+    application:
+        name: space
+    cloud:
+        config:
+            label: master
+            profile: test
+            discovery:
+              enabled: true
+              service-id: config-server
+#            uri: http://localhost:7001
+
+
+# 自定义
+from: git-native

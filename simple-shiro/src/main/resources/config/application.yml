@@ -1,0 +1,22 @@
+spring:
+  application:
+   name: shiro-service
+  mvc:
+    view:
+      suffix: html
+
+  thymeleaf:
+    cache: false
+
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/gray?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+
+mybatis:
+  type-aliases-package: com.simple.demo.model
+
+
+
