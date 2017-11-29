@@ -1,29 +1,28 @@
+server:
+  port: 8001
+
+
 spring:
+  application:
+    name: simple-web
   thymeleaf:
     cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/gray?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
 
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    username: root
-#    password: root
-#    url: jdbc:mysql://127.0.0.1:3306/simple?useUnicode=true&characterEncoding=utf-8&useSSL=false
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
 
 management:
   security:
     enabled: false
 
-mybatis:
-  config-location: classpath:mybatis-config.xml
-  mapper-locations: classpath:mapper/*.xml
-
-mapper:
-    mappers:
-        - com.simple.common.BaseMapper
-    not-empty: false
-    identity: MYSQL
-    style: normal
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:1111/eureka/,http://peer2:1112/eureka/

@@ -1,0 +1,21 @@
+server:
+  port: 1112
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  server:
+    enable-self-preservation: false # 关闭保护机制， 以确保注册中心可以将不可用的实 例正确剔除。
+  client:
+    fetch-registry: false
+    region: hz
+    availability-zones:
+      hz: peer1,peer2
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      peer1: http://peer1:1111/eureka/
+      peer2: http://peer2:1112/eureka/
+
+

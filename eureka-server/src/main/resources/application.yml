@@ -1,0 +1,33 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+security:
+  basic:
+    enabled: false
+#  user:
+#    name: admin
+#    password: admin
+
+eureka:
+  instance:
+    hostname: localhost
+#    ip-address: 127.0.0.1
+#    prefer-ip-address: true
+#    instance-id: ${spring.application.name}:${server.port}
+  client:
+#    register-with-eureka: false # 由于该应用为注册中心，设置为 false, 代表不向注册中心注册自己。
+    fetch-registry: false       # 由于注册中心的职责就是维护服务实例， 它并不需要去检索服务， 所以也设置为 false
+    region: hz
+    availability-zones:
+      hz: zone1,peer1,peer2
+    service-url:
+      # defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://localhost:8761/eureka/
+#      peer1: http://peer1:1111/eureka/
+#      peer2: http://peer2:1112/eureka/
+
+

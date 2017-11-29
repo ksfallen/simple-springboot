@@ -1,0 +1,26 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+
+# Package Files #
+*.jar
+*.war
+*.zip
+*.tar.gz
+*.rar
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+traget/
+
+# Other
+.rebel.xml.bak
+rebel.xml

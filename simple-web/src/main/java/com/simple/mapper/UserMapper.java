@@ -1,7 +1,8 @@
 package com.simple.mapper;
 
-import com.simple.common.BaseMapper;
 import com.simple.model.User;
+
+import tk.mybatis.mapper.common.BaseMapper;
 
 /**
  * User: Jfeng

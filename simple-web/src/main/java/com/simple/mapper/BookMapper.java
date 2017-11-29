@@ -1,6 +1,6 @@
 package com.simple.mapper;
 
-import com.simple.common.BaseMapper;
+import com.simple.common.base.BaseMapper;
 import com.simple.model.Book;
 
 import java.util.List;

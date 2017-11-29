@@ -46,10 +46,9 @@ public class ApplicationTests {
 
     public ResultActions getAction(String url, Object object) throws Exception {
         String json = "";
-        if (object == null) {
+        if (object != null) {
              json = JSONObject.toJSONString(object);
         }
-
 
         return mvc.perform(
                 get(url)
@@ -61,7 +60,7 @@ public class ApplicationTests {
 
     public ResultActions postAction(String url, Object object) throws Exception {
         String json = "";
-        if (object == null) {
+        if (object != null) {
             json = JSONObject.toJSONString(object);
         }
 
