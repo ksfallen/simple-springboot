@@ -1,29 +1,21 @@
 package com.simple.config.web;
 
-import java.util.List;
-
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.boot.web.client.RestTemplateCustomizer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.DefaultResponseErrorHandler;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
+import com.simple.config.SimpleConfiguration;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import static com.simple.config.web.HttpMessageConverterConfig.fastJsonHttpMessageConverter;
-import static com.simple.config.web.HttpMessageConverterConfig.formHttpMessageConverter;
-import static com.simple.config.web.HttpMessageConverterConfig.stringHttpMessageConverter;
+import static com.simple.config.web.HttpMessageConverterConfig.*;
 
 /**
  * @author: Jianfeng.Hu
@@ -33,7 +25,7 @@ import static com.simple.config.web.HttpMessageConverterConfig.stringHttpMessage
 @Setter
 @Configuration
 @ConfigurationProperties("rest")
-@PropertySource(value = {"classpath:rest.properties"}, ignoreResourceNotFound = true)
+@AutoConfigureAfter(SimpleConfiguration.class)
 public class RestTemplateBuilderFactory {
 
     /**
@@ -61,10 +53,10 @@ public class RestTemplateBuilderFactory {
     //     List<HttpMessageConverter<?>> list = Lists.newArrayList(stringHttpMessageConverter(), fastJsonHttpMessageConverter());
     //     restTemplate.setMessageConverters(list);
     //
-    //     RestTemplateBuilder builder = new RestTemplateBuilder();
-    //     builder.messageConverters(list).requestFactory(requestFactory());
+    //     RestTemplateBuilder source = new RestTemplateBuilder();
+    //     source.messageConverters(list).requestFactory(requestFactory());
     //
-    //     return builder;
+    //     return source;
     // }
 
     // public RestTemplateBuilder create2() {
@@ -78,6 +70,9 @@ public class RestTemplateBuilderFactory {
     //    return new RestTemplateBuilder(customizer);
     // }
 
+
+
+
     public RestTemplateBuilder create() {
         return new RestTemplateBuilder()
                 .requestFactory(requestFactory())
@@ -85,6 +80,7 @@ public class RestTemplateBuilderFactory {
                 .additionalMessageConverters(stringHttpMessageConverter())
                 .additionalMessageConverters(fastJsonHttpMessageConverter())
                 .additionalMessageConverters(formHttpMessageConverter())
+                .errorHandler(new DefaultResponseErrorHandler())
                 ;
     }
 
@@ -104,7 +100,7 @@ public class RestTemplateBuilderFactory {
         // requestSentRetryEnabled 开启
         // retryCount 充实次数
         // DefaultHttpRequestRetryHandler retryHandler = new DefaultHttpRequestRetryHandler(1, true);
-        // builder.setRetryHandler(retryHandler);
+        // source.setRetryHandler(retryHandler);
 
         HttpClient client = builder.build();
 

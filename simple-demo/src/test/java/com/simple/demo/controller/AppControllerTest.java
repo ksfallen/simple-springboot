@@ -5,9 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.simple.common.base.AbstractApplicationTest;
 import com.simple.common.base.bean.ResultBean;
-import com.simple.demo.mapper.AppInfoMapper;
-import com.simple.demo.model.AppInfo;
-import com.simple.demo.model.UserInfo;
 import com.simple.entity.dto.AppInfoDTO;
 
 /**
@@ -18,9 +15,6 @@ public class AppControllerTest extends AbstractApplicationTest {
 
     @Autowired
     private AppController appController;
-
-    @Autowired
-    private AppInfoMapper appInfoMapper;
 
     @Test
     public void getAppInfo() {

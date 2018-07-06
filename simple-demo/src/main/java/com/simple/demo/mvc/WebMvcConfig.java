@@ -8,8 +8,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.simple.config.interceptor.LoggerInterceptor;
-
 import lombok.extern.slf4j.Slf4j;
 
 import static com.simple.config.web.HttpMessageConverterConfig.*;
@@ -34,7 +32,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         // addPathPatterns 用于添加拦截规则
         // excludePathPatterns 用户排除拦截
-        // registry.addInterceptor(new LoggerInterceptor());//.addPathPatterns("/**");
+        // registry.addInterceptor(new LoggerInterceptor());
+        //.addPathPatterns("/**");
         super.addInterceptors(registry);
     }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.demo.mapper.SysRolePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.simple.demo.model.sys.SysRolePermission">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sysRoleId" jdbcType="INTEGER" property="sysRoleId" />
+    <result column="sysPermissionId" jdbcType="INTEGER" property="sysPermissionId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sysRoleId, sysPermissionId
+  </sql>
+</mapper>

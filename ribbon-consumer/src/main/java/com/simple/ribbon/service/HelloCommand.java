@@ -2,7 +2,7 @@ package com.simple.ribbon.service;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
-import com.simple.common.util.RestClientUtil;
+import com.simple.common.util.RestTemplateUtil;
 import com.simple.constants.ServiceConstants;
 
 /**
@@ -17,7 +17,7 @@ public class HelloCommand  extends HystrixCommand<String>{
 
     @Override
     protected String run() throws Exception {
-        return RestClientUtil.getForObject(ServiceConstants.hello);
+        return null;
     }
 
     @Override

@@ -18,23 +18,25 @@
         <shiro-spring.version>1.4.0</shiro-spring.version>
         <maven.install.skip>true</maven.install.skip>
         <maven.deploy.skip>true</maven.deploy.skip>
+
+        <spring-cloud-zuul-ratelimit.version>1.4.0.RELEASE</spring-cloud-zuul-ratelimit.version>
     </properties>
 
     <modules>
         <module>../simple-config</module>
-        <module>../simple-entity</module>
         <module>../simple-core</module>
-        <module>../simple-business-api</module>
+        <module>../simple-api</module>
+        <module>../simple-api-server</module>
+
         <module>../eureka-server</module>
         <module>../simple-demo</module>
-        <module>../ribbon-consumer</module>
-        <module>../feign-consumer</module>
-        <module>../hystrix-dashboard</module>
         <module>../api-gateway</module>
-        <module>../simple-config-server</module>
-        <module>../simple-config-client</module>
+        <module>../ribbon-consumer</module>
+        <module>../hystrix-dashboard</module>
+        <!--<module>../simple-config-server</module>-->
+        <!--<module>../simple-config-client</module>-->
         <!--<module>../simple-demo-freemark</module>-->
-        <!--<module>../simple-web</module>-->
+        <module>../simple-web</module>
     </modules>
 
     <dependencyManagement>
@@ -51,13 +53,26 @@
             </dependency>
             <dependency>
                 <groupId>com.simple</groupId>
-                <artifactId>simple-entity</artifactId>
+                <artifactId>simple-api</artifactId>
                 <version>${simple.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.simple</groupId>
-                <artifactId>simple-business-api</artifactId>
+                <artifactId>simple-common</artifactId>
                 <version>${simple.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.marcosbarbero.cloud</groupId>
+                <artifactId>spring-cloud-zuul-ratelimit</artifactId>
+                <version>${spring-cloud-zuul-ratelimit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

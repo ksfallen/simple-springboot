@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.simple.common.util.RestClientUtil;
+import com.simple.common.util.RestTemplateUtil;
 import com.simple.constants.ServiceConstants;
 
 /**
@@ -19,6 +19,7 @@ public class TraceController {
     @RequestMapping("trace1")
     public String trace() {
         logger.info("===<call trace-1>===");
-        return RestClientUtil.getForObject(ServiceConstants.trace2);
+        // return RestTemplateUtil.getForObject(ServiceConstants.trace2);
+        return null;
     }
 }

@@ -21,8 +21,7 @@
         <result column="ownerId" jdbcType="INTEGER" property="ownerId"/>
         <result column="inputDate" jdbcType="TIMESTAMP" property="inputDate"/>
         <result column="stampDate" jdbcType="TIMESTAMP" property="stampDate"/>
-        <association property="userInfo" javaType="com.simple.demo.model.UserInfo"
-                    column="ownerId"  >
+        <association property="userInfo" javaType="com.simple.demo.model.UserInfo" column="ownerId"  >
             <result column="userName" jdbcType="VARCHAR" property="userName" />
         </association>
     </resultMap>

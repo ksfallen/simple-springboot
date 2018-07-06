@@ -18,15 +18,8 @@ public class IndexController extends BaseController {
 
     @RequestMapping(value = {"/", "index"})
     @ResponseBody
-    public String hello() {
+    public String index() {
         return "Hello demo war !!";
-    }
-
-
-    @RequestMapping("/exception")
-    @ResponseBody
-    public int zeroException() throws SQLException {
-        throw new SQLException();
     }
 
 }

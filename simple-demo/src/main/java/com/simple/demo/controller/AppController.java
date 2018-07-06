@@ -3,13 +3,12 @@ package com.simple.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.simple.business.api.AppInfoBusinessService;
+import com.simple.demo.service.AppInfoService;
 import com.simple.common.base.BaseController;
 import com.simple.common.base.bean.ResultBean;
-import com.simple.demo.model.AppInfo;
 import com.simple.entity.dto.AppInfoDTO;
 
 /**
@@ -21,18 +20,17 @@ import com.simple.entity.dto.AppInfoDTO;
 public class AppController extends BaseController {
 
     @Autowired
-    private AppInfoBusinessService appInfoBusinessService;
+    private AppInfoService appInfoService;
 
-
-    @RequestMapping("/getAppInfo")
+    @RequestMapping(value = "/getAppInfo", method = RequestMethod.GET)
     public ResultBean<AppInfoDTO> getAppInfo(Integer appInfoId) {
-        return appInfoBusinessService.getAppInfo(appInfoId);
+        return appInfoService.getAppInfo(appInfoId);
+
     }
 
     @RequestMapping("/info")
-    @ResponseBody
     public Object info() {
-        AppInfo info = new AppInfo();
+        AppInfoDTO info = new AppInfoDTO();
         info.setAppName("name");
         info.setAppDesc("desc");
         return info;

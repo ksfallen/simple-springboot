@@ -1,20 +1,41 @@
 package com.simple.demo.mvc;
 
-import org.springframework.boot.autoconfigure.web.ErrorAttributes;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.simple.config.advice.DefaultExceptionHandler;
+import com.netflix.client.ClientException;
+import com.simple.common.base.bean.ResultBean;
+import com.simple.common.base.bean.ResultBeanBuilder;
+import com.simple.common.constants.enums.ResultMessage;
+import com.simple.config.mvc.advice.DefaultExceptionHandler;
 
-/**
- * @author: Jianfeng.Hu
- * @date: 2017/10/1
- */
-@RestController
-@ControllerAdvice()
+import feign.RetryableException;
+import lombok.extern.slf4j.Slf4j;
+
+@ControllerAdvice
+@ResponseBody
+@Slf4j
 public class SimpleExceptionHandler extends DefaultExceptionHandler {
+
+    @Override
+    public ResultBean handleException(HttpServletRequest req, Exception e) {
+
+        // Feign 调用异常
+        if (e.getCause() != null && e.getCause() instanceof ClientException) {
+            log.error("handleException url: {}", req.getRequestURL(), e);
+            ClientException ex = (ClientException) (e.getCause());
+            return ResultBeanBuilder.error().withResultMessage(ResultMessage.ERROR_SYS).withMessage(ex.getMessage()).build();
+        }
+
+        if (e instanceof RetryableException) {
+            log.error("handleException url: {}", req.getRequestURL(), e);
+            return ResultBeanBuilder.error().withResultMessage(ResultMessage.ERROR_SYS).withMessage(e.getMessage()).build();
+        }
+
+        return super.handleException(req, e);
+    }
+
 
 }

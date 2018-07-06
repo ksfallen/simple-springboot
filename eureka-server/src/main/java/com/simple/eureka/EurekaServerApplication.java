@@ -12,7 +12,7 @@ import org.springframework.core.env.Environment;
 @EnableEurekaServer
 public class EurekaServerApplication {
 
-	public static void main(String[] args) throws NamingException {
+	public static void main(String[] args) {
         SpringApplication.run(EurekaServerApplication.class, args);
     }
 

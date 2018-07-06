@@ -1,9 +1,0 @@
-#server:
-#  context-path: /demo
-
-spring:
-  application:
-   name: hello-service
-logging:
-  file: /httx/logs/out.log
-

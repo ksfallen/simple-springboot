@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.demo.mapper.SysRoleMapper">
+  <resultMap id="BaseResultMap" type="com.simple.demo.model.sys.SysRole">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="available" jdbcType="INTEGER" property="available" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, available, role, description
+  </sql>
+</mapper>

@@ -51,3 +51,7 @@ spring.datasource.druid.initial-size=10
 ```
 <springProperty scope="context" name="logger.mapper" source="logger.mapper"/>
 ```
+
+## Eendpoints
+
+### 增加 ApiEendpoint  返回所有 Api 接口

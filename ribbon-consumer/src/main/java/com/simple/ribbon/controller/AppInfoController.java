@@ -1,6 +1,7 @@
 package com.simple.ribbon.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ public class AppInfoController {
     @Autowired
     private AppInfoService appInfoService;
 
-    @RequestMapping("getAppInfo")
+    @PostMapping("getAppInfo")
     public ResultBean<AppInfoDTO> getAppInfo(Integer appInfoId) {
         return appInfoService.getAppInfo(appInfoId);
     }
