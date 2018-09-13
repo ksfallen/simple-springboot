@@ -18,6 +18,6 @@ public class UserInfoService extends BaseService<UserInfo> {
     public UserInfo selectByName(String userName) {
         UserInfo record = new UserInfo();
         record.setUserName(userName);
-        return selectOne(record);
+        return findOne(record);
     }
 }

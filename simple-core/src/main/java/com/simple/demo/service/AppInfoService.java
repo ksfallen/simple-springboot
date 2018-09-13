@@ -12,4 +12,9 @@ public class AppInfoService extends BaseService<AppInfo> {
 
     @Autowired
     private AppInfoMapper appInfoMapper;
+
+    @Override
+    public AppInfo findById(Integer id) {
+        return appInfoMapper.findById2(id);
+    }
 }

@@ -3,20 +3,14 @@ package com.simple.ribbon.service;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.coyote.http2.ByteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.alibaba.fastjson.TypeReference;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
-import com.simple.common.base.BaseBusinessService;
 import com.simple.common.base.bean.ResultBean;
 import com.simple.common.base.bean.ResultBeanBuilder;
-import com.simple.common.util.JsonUtil;
-import com.simple.common.util.RestTemplateUtil;
-import com.simple.constants.ServiceConstants;
 import com.simple.entity.dto.AppInfoDTO;
 
 
@@ -27,7 +21,7 @@ import com.simple.entity.dto.AppInfoDTO;
  * @date: 2017/10/17
  */
 @Service
-public class AppInfoService extends BaseBusinessService {
+public class AppInfoService {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -68,6 +62,6 @@ public class AppInfoService extends BaseBusinessService {
     }
 
     private String helloFallBack() {
-        return ResultBeanBuilder.error().withDesc("helloFallBack desc").build().toString();
+        return ResultBeanBuilder.error().withMessage("helloFallBack desc").build().toString();
     }
 }

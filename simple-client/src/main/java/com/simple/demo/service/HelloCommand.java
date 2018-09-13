@@ -1,4 +1,4 @@
-package com.simple.ribbon.service;
+package com.simple.demo.service;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
@@ -7,7 +7,7 @@ import com.netflix.hystrix.HystrixCommandGroupKey;
  * @author: Jianfeng.Hu
  * @date: 2017/10/24
  */
-public class HelloCommand  extends HystrixCommand<String>{
+public class HelloCommand extends HystrixCommand<String>{
 
     protected HelloCommand(HystrixCommandGroupKey group) {
         super(group);

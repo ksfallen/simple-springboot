@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>simple-springboot-parent</artifactId>
+    <artifactId>simple-springboot</artifactId>
     <version>0.0.1</version>
     <packaging>pom</packaging>
 
@@ -14,12 +14,7 @@
     </parent>
 
     <properties>
-        <simple.version>0.0.1</simple.version>
-        <shiro-spring.version>1.4.0</shiro-spring.version>
         <maven.install.skip>true</maven.install.skip>
-        <maven.deploy.skip>true</maven.deploy.skip>
-
-        <spring-cloud-zuul-ratelimit.version>1.4.0.RELEASE</spring-cloud-zuul-ratelimit.version>
     </properties>
 
     <modules>
@@ -29,14 +24,13 @@
         <module>../simple-api-server</module>
 
         <module>../eureka-server</module>
-        <module>../simple-demo</module>
+        <module>../simple-client</module>
         <module>../api-gateway</module>
-        <module>../ribbon-consumer</module>
-        <module>../hystrix-dashboard</module>
+        <!--<module>../ribbon-consumer</module>-->
         <!--<module>../simple-config-server</module>-->
         <!--<module>../simple-config-client</module>-->
         <!--<module>../simple-demo-freemark</module>-->
-        <module>../simple-web</module>
+        <!--<module>../simple-web</module>-->
     </modules>
 
     <dependencyManagement>
@@ -59,9 +53,8 @@
             <dependency>
                 <groupId>com.simple</groupId>
                 <artifactId>simple-common</artifactId>
-                <version>${simple.version}</version>
+                <version>${simple-common.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

@@ -26,4 +26,10 @@
         </association>
     </resultMap>
 
+
+    <select id="findById2"  resultMap="BaseResultMap2" parameterType="java.lang.Integer">
+        select * from AppInfo a, UserINfo b where a.ownerId = b.id and appInfoId = #{id};
+    </select>
+
+
 </mapper>

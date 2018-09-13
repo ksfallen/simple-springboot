@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AppInfoDTO extends BaseBean {
-    private static final long serialVersionUID = -9138357859860047474L;
 
     private Integer appInfoId;
     /**
@@ -37,5 +36,7 @@ public class AppInfoDTO extends BaseBean {
      * 更新时间
      */
     private Date stampDate;
+
+    private UserInfoDTO userInfo;
 
 }

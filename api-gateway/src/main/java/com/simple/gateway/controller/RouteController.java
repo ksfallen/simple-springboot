@@ -3,16 +3,15 @@ package com.simple.gateway.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.DefaultServiceInstance;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -30,6 +29,11 @@ public class RouteController {
 
     @Autowired
     private LoadBalancerClient loadBalancer;
+
+    @RequestMapping("/")
+    public String index(){
+        return "hello api gateway...";
+    }
 
     @GetMapping("/refreshRoute")
     public String refresh() {
@@ -64,7 +68,6 @@ public class RouteController {
         Map<String, Object> map = new HashMap<>(2);
         map.put("getRoutes", routeLocator.getRoutes());
         map.put("getIgnoredPaths", routeLocator.getIgnoredPaths());
-
         return map;
     }
 }

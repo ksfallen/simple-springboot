@@ -2,7 +2,6 @@ package com.simple.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.simple.api.AppInfoApi;
@@ -22,7 +21,7 @@ public class AppInfoServiceImpl implements AppInfoApi {
 
     @Override
     public ResultBean<AppInfoDTO> getAppInfo(@PathVariable Integer appInfoId) {
-        AppInfo appInfo = appInfoService.selectById(appInfoId);
+        AppInfo appInfo = appInfoService.findById(appInfoId);
         AppInfoDTO bean = BeanUtil.copyProperties(appInfo, AppInfoDTO.class);
         return ResultBeanBuilder.success().withData(bean).build();
     }

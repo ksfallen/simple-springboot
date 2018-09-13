@@ -11,9 +11,8 @@
 
     <parent>
         <groupId>com.simple</groupId>
-        <artifactId>simple-springboot-parent</artifactId>
+        <artifactId>simple-springboot</artifactId>
         <version>0.0.1</version>
-        <relativePath>../simple-springboot-parent</relativePath>
     </parent>
 
     <dependencies>

@@ -35,7 +35,7 @@ public class SysPermission extends BaseParamBean {
     private String parentIds;
 
     /**
-     * 权限字符串,menu例子：role:*，button例子：role:create,role:update,role:delete,role:view
+     * 权限字符串,menu例子：role:*，button例子：role:builder,role:update,role:delete,role:view
      */
     private String permission;
 

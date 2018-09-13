@@ -49,10 +49,6 @@
 //     }
 //
 //     @Override
-//     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-//     }
-//
-//     @Override
 //     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 //         if (request.getRequestURI() != null && handler instanceof HandlerMethod) {
 //             Object result = request.getAttribute(RESPONSE_FOR_LOGGER);

@@ -27,7 +27,7 @@
 //     // config/application > classpath:application
 //     @Bean
 //     public DataSource createDataSource(Environment env) {
-//         DruidDataSource build = DruidDataSourceBuilder.create().build();
+//         DruidDataSource build = DruidDataSourceBuilder.builder().build();
 //         return build;
 //     }
 // }

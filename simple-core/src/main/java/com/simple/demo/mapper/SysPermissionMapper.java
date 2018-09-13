@@ -5,6 +5,5 @@ import org.apache.ibatis.annotations.Mapper;
 import com.simple.common.base.BaseMapper;
 import com.simple.demo.model.sys.SysPermission;
 
-@Mapper
 public interface SysPermissionMapper extends BaseMapper<SysPermission> {
 }

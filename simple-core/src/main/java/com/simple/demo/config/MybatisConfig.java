@@ -25,8 +25,8 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 @MapperScan(value = "com.simple.demo.mapper")
 public class MybatisConfig {
 
-    @Autowired
-    private SqlSessionFactory factory;
+    // @Autowired
+    // private SqlSessionFactory factory;
 
     // 使用 mybatis.properties 的 配置文件代替
     // @Bean

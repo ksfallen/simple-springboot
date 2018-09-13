@@ -1,9 +1,0 @@
-server:
-  port: 2000
-
-spring:
-  application:
-    name: hystrix-dashborad
-
-
-
