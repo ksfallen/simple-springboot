@@ -10,13 +10,12 @@
         <groupId>com.simple</groupId>
         <artifactId>simple-springboot</artifactId>
         <version>0.0.1</version>
-
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>com.simple</groupId>
-            <artifactId>simple-common</artifactId>
+            <groupId>com.yhml</groupId>
+            <artifactId>yhml-core</artifactId>
         </dependency>
         <dependency>
             <groupId>tk.mybatis</groupId>

@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-import com.simple.common.base.bean.BaseParamBean;
+import com.yhml.core.base.bean.BaseParamBean;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -15,8 +15,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.simple</groupId>
-            <artifactId>simple-common</artifactId>
+            <groupId>com.yhml</groupId>
+            <artifactId>yhml-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

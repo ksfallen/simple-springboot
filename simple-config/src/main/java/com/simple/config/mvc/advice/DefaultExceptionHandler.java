@@ -14,13 +14,11 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.simple.common.base.bean.ResultBean;
-import com.simple.common.base.bean.ResultBeanBuilder;
-import com.simple.common.exception.BaseException;
+import com.yhml.core.base.BaseException;
+import com.yhml.core.base.bean.ResultBean;
 
 import lombok.extern.slf4j.Slf4j;
 
-import static com.simple.common.constants.enums.ResultMessage.ERROR_ARGS;
 
 /**
  * 默认异常处理类
@@ -68,13 +66,13 @@ public abstract class DefaultExceptionHandler extends ResponseEntityExceptionHan
     public ResultBean handleException(HttpServletRequest req, Exception e) {
         log.error("handleException URI:{}", req.getRequestURI(), e);
 
-        ResultBeanBuilder builder = ResultBeanBuilder.error();
+        ResultBean.ResultBeanBuilder<Object> builder = ResultBean.builder();
 
         if (e instanceof BaseException) {
             BaseException ex = (BaseException) e;
             // 读取配置在 validator.properties 的 Message
             // String msg = messageSource.getMessage(e.getMessage(), null, e.getMessage(), Locale.CHINA);
-            builder.withCode(ex.getCode()).withMessage(ex.getMessage()).build();
+            builder.code(ex.getCode()).message(ex.getMessage());
         } else {
             customHandleException(e, builder);
         }
@@ -82,42 +80,42 @@ public abstract class DefaultExceptionHandler extends ResponseEntityExceptionHan
         return builder.build();
     }
 
-    protected abstract void customHandleException(Exception ex, ResultBeanBuilder builder);
+    protected abstract void customHandleException(Exception ex, ResultBean.ResultBeanBuilder builder);
 
-    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status,
-                                                             WebRequest request) {
-        log.error("handleException {}", request);
-
-        ResultBeanBuilder builder = ResultBeanBuilder.error().withCode(String.valueOf(status.value())).withMessage(ex.getMessage());
-        if (ex instanceof BindException) {
-            BindException e = (BindException) ex;
-            // 设参数绑定错误的具体信息
-            if (e.hasFieldErrors()) {
-                FieldError field = e.getFieldErrors().get(0);
-                String msg = field.getRejectedValue() != null ? field.getDefaultMessage() : field.getField() + ":" + field
-                        .getDefaultMessage();
-                builder.withMessage(msg).withCode(ERROR_ARGS.getCode());
-            }
-        }
-
-        if (ex instanceof MethodArgumentNotValidException) {
-            MethodArgumentNotValidException e = (MethodArgumentNotValidException) ex;
-            if (e != null && e.getBindingResult().hasFieldErrors()) {
-                FieldError field = e.getBindingResult().getFieldError();
-                String msg = field.getRejectedValue() != null ? field.getDefaultMessage() : field.getField() + ":" + field
-                        .getDefaultMessage();
-                builder.withMessage(msg).withCode(ERROR_ARGS.getCode());
-            }
-        }
-
-        if (ex instanceof MethodArgumentTypeMismatchException) {
-            MethodArgumentTypeMismatchException e = (MethodArgumentTypeMismatchException) ex;
-            String msg = e.getName() + "=" + e.getValue();
-            log.error("Method:{}, Arg:{}", e.getParameter().getMethod().getName(), msg);
-            builder.withResultMessage(ERROR_ARGS).withExtendMessage(msg);
-        }
-
-        log.error("message:{}", ex.getMessage());
-        return new ResponseEntity<>(builder.build(), status);
-    }
+    // protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status,
+    //                                                          WebRequest request) {
+    //     log.error("handleException {}", request);
+    //
+    //     ResultBeanBuilder builder = ResultBeanBuilder.error().withCode(String.valueOf(status.value())).withMessage(ex.getMessage());
+    //     if (ex instanceof BindException) {
+    //         BindException e = (BindException) ex;
+    //         // 设参数绑定错误的具体信息
+    //         if (e.hasFieldErrors()) {
+    //             FieldError field = e.getFieldErrors().get(0);
+    //             String msg = field.getRejectedValue() != null ? field.getDefaultMessage() : field.getField() + ":" + field
+    //                     .getDefaultMessage();
+    //             builder.withMessage(msg).withCode(ERROR_ARGS.getCode());
+    //         }
+    //     }
+    //
+    //     if (ex instanceof MethodArgumentNotValidException) {
+    //         MethodArgumentNotValidException e = (MethodArgumentNotValidException) ex;
+    //         if (e != null && e.getBindingResult().hasFieldErrors()) {
+    //             FieldError field = e.getBindingResult().getFieldError();
+    //             String msg = field.getRejectedValue() != null ? field.getDefaultMessage() : field.getField() + ":" + field
+    //                     .getDefaultMessage();
+    //             builder.withMessage(msg).withCode(ERROR_ARGS.getCode());
+    //         }
+    //     }
+    //
+    //     if (ex instanceof MethodArgumentTypeMismatchException) {
+    //         MethodArgumentTypeMismatchException e = (MethodArgumentTypeMismatchException) ex;
+    //         String msg = e.getName() + "=" + e.getValue();
+    //         log.error("Method:{}, Arg:{}", e.getParameter().getMethod().getName(), msg);
+    //         builder.withResultMessage(ERROR_ARGS).withExtendMessage(msg);
+    //     }
+    //
+    //     log.error("message:{}", ex.getMessage());
+    //     return new ResponseEntity<>(builder.build(), status);
+    // }
 }

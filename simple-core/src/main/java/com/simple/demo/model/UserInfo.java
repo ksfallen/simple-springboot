@@ -1,7 +1,10 @@
 package com.simple.demo.model;
 
-import com.simple.common.base.bean.BaseParamBean;
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.yhml.core.base.bean.BaseParamBean;
 
 import lombok.Getter;
 import lombok.Setter;
